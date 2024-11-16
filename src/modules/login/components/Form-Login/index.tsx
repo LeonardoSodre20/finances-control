@@ -7,24 +7,26 @@ import { Input } from "@/components/Input-Field/Index"
 import { Mail, LockKeyhole, EyeOff, Eye } from "lucide-react"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
+
 import { Button } from "@/components/Button/Index"
 
 export const FormLogin = () => {
 
   const [isVisible, setIsVisible] = useState<boolean>(false)
+  const router = useRouter()
 
   const handleChangeVisibility = () => {
     setIsVisible(!isVisible)
   }
 
-
   return (
-    <form className="flex flex-col items-center justify-center gap-6 w-[400px]">
+    <section className="flex flex-col items-center justify-center gap-6 w-[400px]">
       <Image
         src='/images/bg-login.png'
         alt='bg-login'
-        width={200}
-        height={200}
+        width={180}
+        height={180}
         quality={100}
       />
 
@@ -54,7 +56,10 @@ export const FormLogin = () => {
         </Input.Wrapper>
       </div>
 
-      <Button.Root label="Entrar" />
-    </form>
+      <Button.Root
+        label="Entrar"
+        onClick={() => router.push('/home')}
+      />
+    </section>
   )
 }
